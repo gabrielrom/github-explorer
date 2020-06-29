@@ -41,7 +41,7 @@ export const RepositoryInfo = styled.section`
 
       strong {
         font-size: 36px;
-        color: #3d3d4d;
+        color: ${(props) => props.theme.colors.text};
       }
 
       p {
@@ -66,7 +66,7 @@ export const RepositoryInfo = styled.section`
       strong {
         display: block;
         font-size: 36px;
-        color: #3d3d4d;
+        color: ${(props) => props.theme.colors.text};
       }
 
       span {
@@ -119,7 +119,7 @@ export const Issues = styled.div`
 
     svg {
       margin-left: auto;
-      color: #cbcbd6;
+      color: ${(props) => props.theme.colors.primary};
     }
   }
 `;

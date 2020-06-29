@@ -1,11 +1,17 @@
-import React, { useState, FormEvent, useEffect } from 'react';
+import React, { useState, FormEvent, useEffect, useContext } from 'react';
 import { FiChevronRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import { ThemeContext } from 'styled-components';
+import Switch from 'react-switch';
+import { shade } from 'polished';
 import api from '../../services/api';
 
-import Logo from '../../assets/ligth/logo.svg';
+import Logo from '../../assets/light/logo.svg';
+import LogoDark from '../../assets/dark/logo.svg';
 
-import { Title, Form, Repositories, Error } from './styles';
+import { ThemeContext as themeContext } from '../../hooks/ThemeContext';
+
+import { Title, Form, Repositories, Error, Header } from './styles';
 
 interface Repository {
   full_name: string;
@@ -17,8 +23,12 @@ interface Repository {
 }
 
 const Dashboard: React.FC = () => {
+  const { title, colors } = useContext(ThemeContext);
+  const { toggleTheme } = useContext(themeContext);
+
   const [newRepo, setNewRepo] = useState('');
   const [inputError, setInputError] = useState('');
+
   const [repositories, setRepositories] = useState<Repository[]>(() => {
     const storagedRepositories = localStorage.getItem(
       '@GitHubExplorer:repositories',
@@ -62,7 +72,21 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-      <img src={Logo} alt="GitHub Explorer" />
+      <Header>
+        <img src={title === 'light' ? Logo : LogoDark} alt="GitHub Explorer" />
+        <Switch
+          onChange={toggleTheme}
+          checked={title === 'dark'}
+          checkedIcon={false}
+          uncheckedIcon={false}
+          height={10}
+          width={40}
+          handleDiameter={20}
+          onColor={shade(0.2, colors.primary)}
+          onHandleColor={colors.primary}
+        />
+      </Header>
+
       <Title>Explore repositórios no Github.</Title>
 
       <Form hasError={!!inputError} onSubmit={handleAddRepository}>

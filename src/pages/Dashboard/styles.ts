@@ -7,11 +7,19 @@ interface FormProps {
 
 export const Title = styled.h1`
   font-size: 48px;
-  color: #3a3a3a;
+  color: ${(props) => props.theme.colors.text};
 
   margin-top: 60px;
   max-width: 450px;
   line-height: 56px;
+`;
+
+export const Header = styled.header`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  max-width: 700px;
 `;
 
 export const Form = styled.form<FormProps>`
@@ -47,13 +55,13 @@ export const Form = styled.form<FormProps>`
 
     border: 0;
     border-radius: 0 5px 5px 0;
-    background: #04d361;
+    background: ${(props) => props.theme.colors.primary};
     color: #fff;
     font-weight: bold;
-    transition: background-color border-color 0.2s;
+    transition: background-color 0.2s;
 
     &:hover {
-      background: ${shade(0.2, '#04d361')};
+      background: ${(props) => shade(0.2, props.theme.colors.primary)};
     }
   }
 `;
@@ -112,7 +120,7 @@ export const Repositories = styled.div`
 
     svg {
       margin-left: auto;
-      color: #cbcbd6;
+      color: ${(props) => props.theme.colors.primary};
     }
   }
 `;
