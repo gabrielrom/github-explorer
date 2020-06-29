@@ -3,7 +3,7 @@ import { useRouteMatch, Link } from 'react-router-dom';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import api from '../../services/api';
 
-import logo from '../../assets/logo.svg';
+import logo from '../../assets/light/logo.svg';
 
 import { Header, RepositoryInfo, Issues } from './styles';
 

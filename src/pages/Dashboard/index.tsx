@@ -3,7 +3,7 @@ import { FiChevronRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
 
-import Logo from '../../assets/logo.svg';
+import Logo from '../../assets/ligth/logo.svg';
 
 import { Title, Form, Repositories, Error } from './styles';
 
